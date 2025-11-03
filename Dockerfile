@@ -16,7 +16,7 @@ RUN mvn clean install -DskipTests
 
 # Stage 2: Create the final, minimal runtime image
 # Use a JRE image (smaller than JDK) for running the application
-FROM openjdk:17-jre-alpine AS final
+FROM openjdk:17-jdk-alpine AS final
 
 # Set the working directory for the final stage
 WORKDIR /app
