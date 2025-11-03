@@ -10,7 +10,7 @@ RUN mvn -B verify -DskipTests
 COPY src ./src
 
 # Run the Maven command to compile, test, and package the application
-RUN mvn -B package -DskipTests
+RUN mvn -B clean install -DskipTests
 
 # Stage 2: Create the final, minimal runtime image
 # Use a JRE image (smaller than JDK) for running the application
