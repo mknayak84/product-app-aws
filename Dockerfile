@@ -1,5 +1,5 @@
 # Stage 1: Build the application using a full JDK and Maven
-FROM public.ecr.aws/amazoncorretto/maven:3.8.3-al2023-jdk17 AS builder
+FROM maven:3.9.6-amazoncorretto-17-al2023 AS builder
 
 # Set the working directory inside the container for the build stage
 WORKDIR /app
