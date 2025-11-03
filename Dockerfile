@@ -1,5 +1,5 @@
 # Stage 1: Build the application using a full JDK and Maven
-FROM maven:3.8.3-openjdk-17 AS builder
+FROM public.ecr.aws/amazoncorretto/maven:3.8.3-al2023-jdk17 AS builder
 
 # Set the working directory inside the container for the build stage
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN mvn -B package -DskipTests
 
 # Stage 2: Create the final, minimal runtime image
 # Use a JRE image (smaller than JDK) for running the application
-FROM public.ecr.aws/docker/library/openjdk:17 AS final
+FROM public.ecr.aws/amazoncorretto/amazoncorretto:17-jre-alpine AS final
 
 # Set the working directory for the final stage
 WORKDIR /app
