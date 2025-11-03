@@ -13,7 +13,7 @@ RUN mvn clean install -DskipTests
 
 # Stage 2: Create the final, minimal runtime image
 # Use a JRE image (smaller than JDK) for running the application
-FROM openjdk:17-jdk-alpine AS final
+FROM public.ecr.aws/docker/library/openjdk:17 AS final
 
 # Set the working directory for the final stage
 WORKDIR /app
