@@ -4,11 +4,8 @@ FROM maven:3.8.3-openjdk-17 AS builder
 # Set the working directory inside the container for the build stage
 WORKDIR /app
 
-# Copy the Maven project files (pom.xml and source code) into the container
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
 # Download dependencies first to leverage Docker caching (if pom.xml doesn't change)
-RUN ./mvnw dependency:go-offline
+RUN mvn dependency:go-offline
 COPY src ./src
 
 # Run the Maven command to compile, test, and package the application
