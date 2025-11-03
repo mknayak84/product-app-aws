@@ -54,7 +54,23 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <version>3.4.0</version>
+	            <configuration>
+	                <!-- REPLACE THIS VALUE with the fully qualified name of your main class -->
+	                <mainClass>com.product.ProductAppAwsApplication</mainClass> 
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
 		</plugins>
 	</build>
-
+	
 </project>
