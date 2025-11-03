@@ -3,6 +3,7 @@ FROM maven:3.8.3-openjdk-17 AS builder
 
 # Set the working directory inside the container for the build stage
 WORKDIR /app
+COPY pom.xml .
 
 # Download dependencies first to leverage Docker caching (if pom.xml doesn't change)
 RUN mvn -B verify -DskipTests
