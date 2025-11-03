@@ -5,11 +5,11 @@ FROM maven:3.8.3-openjdk-17 AS builder
 WORKDIR /app
 
 # Download dependencies first to leverage Docker caching (if pom.xml doesn't change)
-RUN mvn dependency:go-offline
+RUN mvn -B verify -DskipTests
 COPY src ./src
 
 # Run the Maven command to compile, test, and package the application
-RUN mvn clean install -DskipTests
+RUN mvn -B package -DskipTests
 
 # Stage 2: Create the final, minimal runtime image
 # Use a JRE image (smaller than JDK) for running the application
