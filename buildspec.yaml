@@ -23,3 +23,8 @@ phases:
     commands:
       - echo Pushing Docker image to ECR...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+
+artifacts:
+  files:
+    - imagedefinitions.json
+    - target/ProductAppAWS-0.0.1-SNAPSHOT.jar
