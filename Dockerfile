@@ -23,10 +23,10 @@ WORKDIR /app
 
 # Copy the built JAR file from the 'builder' stage into the 'final' stage
 # This resolves the 'lstat' error because the JAR file is created internally
-COPY --from=builder /app/target/*.jar /app/app.jar
+COPY --from=builder /app/target/ProductAppAWS-0.0.1-SNAPSHOT.jar /app/ProductAppAWS-0.0.1-SNAPSHOT.jar
 
 # Expose the application's port (default for Spring Boot)
 EXPOSE 8080
 
 # Define the command to run the application when the container starts
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/ProductAppAWS-0.0.1-SNAPSHOT.jar"]
