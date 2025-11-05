@@ -1,4 +1,3 @@
-
 version: 0.2
 
 env:
@@ -6,6 +5,7 @@ env:
     AWS_REGION: us-east-1
     IMAGE_REPO_NAME: product-app-repo
     IMAGE_TAG: latest
+    # REPOSITORY_URI can also be defined here for clarity, but setting it in pre_build works with version 0.2
 
 phases:
   pre_build:
@@ -23,6 +23,9 @@ phases:
     commands:
       - echo Pushing Docker image to ECR...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Creating imagedefinitions.json...
+      - printf '[{"name":"%s","imageUri":"%s"}]' $IMAGE_REPO_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - cat imagedefinitions.json
 
 artifacts:
   files:
